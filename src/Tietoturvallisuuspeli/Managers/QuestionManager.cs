@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +25,7 @@ namespace Tietoturvallisuuspeli.Managers
             int amountOfDifficulties = Enum.GetValues(typeof(Difficulty)).Length;
             int sizePerDifficulty = amount / amountOfDifficulties;
 
-            // Foreach difficulty filters random questions and adds them to 'resultQuestions'.
+            // Filters random questions foreach difficulty and adds them to 'resultQuestions'.
             foreach (Difficulty difficulty in Enum.GetValues(typeof(Difficulty)))
             {
                 var questionsFilteredByDifficulty = questions.Where(q => q.Difficulty == difficulty)
@@ -68,15 +68,5 @@ namespace Tietoturvallisuuspeli.Managers
 
             return SortQuestions(questions, amount);
         }
-
-        // public async Task<IEnumerable<Question>> GetQuestionsAsync(int amount, Difficulty difficulty)
-        // {
-        //     var questions = await this.db.Questions
-        //         .Include(q => q.Answers)
-        //         .Where(q => q.Difficulty == difficulty)
-        //         .ToListAsync();
-
-        //     return FilterRandomQuestions(questions, amount);
-        // }
     }
 }
